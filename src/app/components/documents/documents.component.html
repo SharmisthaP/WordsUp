@@ -1,0 +1,24 @@
+<app-navbar [title]="title"></app-navbar>
+<br/>
+
+
+
+<h5 class="center">Before you start, you may add 5 topics to describe your document..</h5>
+<app-addtopics (sendTopics)=getTopics($event) (remove)=removeTopic($event)></app-addtopics> 
+<br/>
+<h5 class="center">Here's your word guide..</h5>
+<app-helpgrid [gettopics]="topics"></app-helpgrid>
+  
+<div class="row" id="write">
+  <div class="col m10 offset-m1">
+    <div class="paper" >
+      <div class="paper-content">
+          <textarea onfocus="this.value=''">Whats on your mind today? </textarea>
+      </div>
+  </div>
+</div>
+
+
+
+
+

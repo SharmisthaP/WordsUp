@@ -1,0 +1,36 @@
+
+
+<div class="row" style="background: linear-gradient(#b2dfdb  ,#009688 );width:80vw;">
+    <div class="col m12">
+        <div class="card" >
+            <div class="card-content">
+                <form (ngSubmit)="addTopic()">
+                
+                    <div class="row">
+                        <h6 class="grey-text text-lighten-1 center">This helps to suggest you more relevant words.You may skip this part.</h6>
+                        <div class="input-field col m6 offset-m2 ">
+                    
+                            <input onfocus="this.value=''" id="icon_prefix" type="text" name="newtopic" [(ngModel)]="newtopic">
+                            <label for="icon_prefix">5 words for document</label>
+                        </div>
+                    
+                        <div class="col m3 ">
+                            <br/>
+                            <input  class="btn teal" type="submit" value="+ Add ">
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col m2  dashed" *ngFor="let topic of topics">  
+                        <div class="row">
+                            <div class="col m9" >{{topic}} </div>
+                            <div class="col m3 center"><button class="unstyled-button" (click)="removeTopic(topic)">X</button></div>
+                        </div>
+                    </div>
+                </div>
+                <p></p>
+            </div>
+        </div>
+        
+    </div>
+</div>

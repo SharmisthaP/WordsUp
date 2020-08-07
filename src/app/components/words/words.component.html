@@ -1,0 +1,72 @@
+<app-navbar [title]="title"></app-navbar>
+<br/>
+
+                
+<div class="row" style="background: linear-gradient(#b2dfdb  ,#009688 ); width:70vw;">
+    <div class="col m12">
+        <div class="card">
+            <div class="card-content center" style="padding-top: 3px;padding-bottom: 5px;">
+                <h4 style ="font-family:'Satisfy', cursive; font-size: 35px;">What's the word on your mind?</h4>
+                <textarea id="mytext"  [ngModel]="word" (ngModelChange)="onWordChange($event)"  class="search-text" >{{word}}</textarea>
+                <button class="search-btn" (click)="getInfo()"><i class="material-icons amber-text text-darken-4 medium">search</i></button>
+                <div class="row">
+                    <div class="col m8 offset-m2">
+                        
+                            <div *ngIf="checkSuggestion()" class="envelope">
+                                
+                                <div *ngFor="let suggestion of suggestions">
+                                    <button (click)="setWord(suggestion)" class="unstyled-button">{{suggestion.word}}</button>
+                                </div>
+                                
+                            </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="background: linear-gradient(#ffd54f  ,#ff6f00 ); width:90vw;">
+    <div class="col m12">
+        <div class="card">
+            <div class="card-content center" style="padding-top: 2px;font-size: 20px;">
+                <h4 style ="font-family:'Satisfy', cursive; font-size: 35px;">Know your word ..</h4>
+                <span *ngIf="checkDef()">
+                    {{word}} is defined as <span  style ="font-family:'Satisfy', cursive; font-size: 20px;color: teal;">"{{def}}"</span>
+                </span>
+                <span *ngIf="checkPos()">
+                    and the word is used as a <span  style ="font-family:'Satisfy', cursive; font-size: 20px;color: teal;">{{pos}}</span>. 
+                </span>
+                <span *ngIf="checkPron()">
+                    {{word}} is pronounced as <span  style ="font-family:'Satisfy', cursive; font-size: 20px;color: teal;">"{{pron}}" . </span>
+                </span>
+                <span *ngIf="checkSyn()">
+                    <span style ="font-family:'Satisfy', cursive; font-size: 20px;color: teal;" *ngFor="let synonym of syn">{{synonym.word}}, </span>are the synonyms of {{word}}.
+                </span>
+                <span *ngIf="checkAnt()">
+                    <span style ="font-family:'Satisfy', cursive; font-size: 20px;color: teal;" *ngFor="let antonym of ant">{{antonym.word}}, </span>are the antonyms of {{word}}.
+                </span>
+                <span *ngIf="checkCom()">
+                    {{word}} comprises of <span style ="font-family:'Satisfy', cursive; font-size: 20px;color: teal;" *ngFor="let c of com ">{{c.word}}, </span>.
+                </span>
+                <span *ngIf="checkPar()">
+                    {{word}} is a part of <span style ="font-family:'Satisfy', cursive; font-size: 20px;color: teal;" *ngFor="let p of par ">{{p.word}}, </span>.
+                </span>
+                <span *ngIf="checkSpc()">
+                    {{word}} is an example of <span style ="font-family:'Satisfy', cursive; font-size: 20px;color: teal;" *ngFor="let s of spc ">{{s.word}}, </span>.
+                </span>
+                <span *ngIf="checkGen()">
+                    and the examples of {{word}} are <span style ="font-family:'Satisfy', cursive; font-size: 20px;color: teal;" *ngFor="let g of gen ">{{g.word}}, </span> 
+                </span>
+                
+            </div>
+        </div>
+    </div>
+</div> 
+
+           
+           
+            
+            
+            
+       

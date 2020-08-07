@@ -1,0 +1,33 @@
+.back{
+    
+    height:100px;
+    border: 2px solid teal;
+    border-radius: 30px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    margin-top: 10px;
+   
+}
+.dashed{
+    width:100px;
+    height:30px;
+    
+    background-color:  teal;
+    border-radius: 20px;
+    padding-top: 3px;
+    padding-left:5px;
+   
+    margin: 5px;
+    color:white;
+    font-size: 15px;
+  }
+  .unstyled-button {
+    border: none;
+    
+    padding-right: 30px;
+    background: none;
+    color:white;
+  }
+   
+   

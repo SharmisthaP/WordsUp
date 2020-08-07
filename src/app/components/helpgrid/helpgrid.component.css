@@ -1,0 +1,17 @@
+.back{
+    width:95vw;
+    height:500px;
+    background: linear-gradient(#ffd54f  ,#ff6f00 );
+    border-radius: 20px;
+    margin-left:30px;
+    padding:5px;
+}
+.mytext{
+    background: linear-gradient(#ffd54f  ,#ff6f00 );
+    color: white;
+    width:300px; 
+    height: 35px;
+    margin-right: 5px; 
+   
+}
+

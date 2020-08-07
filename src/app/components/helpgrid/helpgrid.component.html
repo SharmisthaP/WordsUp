@@ -1,0 +1,214 @@
+<div class="row" style=" background: linear-gradient(#ffd54f  ,#ff6f00 );width:95vw;">
+    
+  <div class="col m6">
+    <ul #collapsible class="collapsible expandable">
+      <li>
+        <div class="collapsible-header"><i class="material-icons amber-text text-darken-4">menu_open</i>Find words which mean like..</div>
+        <div class="collapsible-body" style="background:white;">
+
+        <div class="row" style="margin-top:10px">
+          <form (ngSubmit)="getMeansLike()">
+            
+            
+              <div class="input-field col m8 offset-m1">       
+                  <input  id="icon_prefix" type="text" name="phrase" [(ngModel)]="phrase">
+                  <label for="icon_prefix">Type in a phrase/sentence</label>
+              </div>
+              <div class="col m3">
+                  <br/>
+                  <input  class="btn amber darken-3" type="submit" value="Find">
+              </div>
+          
+          </form>
+        </div>
+        <p *ngIf="checkPhrase()" class="teal-text" style="margin-left:5px">
+          <span style ="font-family:'Satisfy', cursive; font-size: 20px;" *ngFor="let result of phrase_results">{{result.word}} | </span>
+        </p>
+      </div>
+      </li>
+
+      <li>
+        <div class="collapsible-header"><i class="material-icons amber-text text-darken-4">menu_open</i>Find words which best describe (adjectives for)..</div>
+        <div class="collapsible-body" style="background:white;">
+
+        <div class="row" style="margin-top:10px">
+          <form (ngSubmit)="getAdjectives()">
+            
+            
+              <div class="input-field col m8 offset-m1">       
+                  <input  id="icon_prefix" type="text" name="noun" [(ngModel)]="noun">
+                  <label for="icon_prefix">Type in a noun</label>
+              </div>
+              <div class="col m3">
+                  <br/>
+                  <input  class="btn amber darken-3" type="submit" value="Find">
+              </div>
+          
+          </form>
+        </div>
+        <p *ngIf="checkNoun()" class="teal-text" style="margin-left:5px">
+          <span style ="font-family:'Satisfy', cursive; font-size: 20px;" *ngFor="let result of noun_results">{{result.word}} | </span>
+        </p>
+      </div>
+      </li>
+
+      <li>
+        <div class="collapsible-header"><i class="material-icons amber-text text-darken-4">menu_open</i>Find words described by(nouns/verbs for..)</div>
+        <div class="collapsible-body" style="background:white;">
+
+        <div class="row" style="margin-top:10px">
+          <form (ngSubmit)="getNouns()">
+            
+            
+              <div class="input-field col m8 offset-m1">       
+                  <input  id="icon_prefix" type="text" name="adjective" [(ngModel)]="adjective">
+                  <label for="icon_prefix">Type in an adjective</label>
+              </div>
+              <div class="col m3">
+                  <br/>
+                  <input  class="btn amber darken-3" type="submit" value="Find">
+              </div>
+          
+          </form>
+        </div>
+        <p *ngIf="checkAdjective()" class="teal-text" style="margin-left:5px">
+          <span style ="font-family:'Satisfy', cursive; font-size: 20px;" *ngFor="let result of adjective_results">{{result.word}} | </span>
+        </p>
+      </div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons amber-text text-darken-4">menu_open</i>Find words triggered by..</div>
+        <div class="collapsible-body" style="background:white;">
+
+        <div class="row" style="margin-top:10px">
+          <form (ngSubmit)="getTriggers()">
+            
+            
+              <div class="input-field col m8 offset-m1">       
+                  <input  id="icon_prefix" type="text" name="trigger" [(ngModel)]="trigger">
+                  <label for="icon_prefix">Type in a word</label>
+              </div>
+              <div class="col m3">
+                  <br/>
+                  <input  class="btn amber darken-3" type="submit" value="Find">
+              </div>
+          
+          </form>
+        </div>
+        <p *ngIf="checkTrigger()" class="teal-text" style="margin-left:5px">
+          <span style ="font-family:'Satisfy', cursive; font-size: 20px;" *ngFor="let result of trigger_results">{{result.word}} | </span>
+        </p>
+      </div>
+      </li>
+    </ul>
+  </div>
+  <div class="col m6">
+    <ul #collapsible class="collapsible expandable">
+      <li>
+        <div class="collapsible-header"><i class="material-icons amber-text text-darken-4">menu_open</i>This word is an instance of?(hypernyms)..</div>
+        <div class="collapsible-body" style="background:white;">
+
+        <div class="row" style="margin-top:10px">
+          <form (ngSubmit)="getHypernyms()">
+            
+            
+              <div class="input-field col m8 offset-m1">       
+                  <input  id="icon_prefix" type="text" name="hypernym" [(ngModel)]="hypernym">
+                  <label for="icon_prefix">Type in a word</label>
+              </div>
+              <div class="col m3">
+                  <br/>
+                  <input  class="btn amber darken-3" type="submit" value="Find">
+              </div>
+          
+          </form>
+        </div>
+        <p *ngIf="checkHypernym()" class="teal-text" style="margin-left:5px">
+          <span style ="font-family:'Satisfy', cursive; font-size: 20px;" *ngFor="let result of hypernym_results">{{result.word}} | </span>
+        </p>
+      </div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons amber-text text-darken-4">menu_open</i>Get instances for the word(hyponyms)..</div>
+        <div class="collapsible-body" style="background:white;">
+
+        <div class="row" style="margin-top:10px">
+          <form (ngSubmit)="getHyponyms()">
+            
+            
+              <div class="input-field col m8 offset-m1">       
+                  <input  id="icon_prefix" type="text" name="hyponym" [(ngModel)]="hyponym">
+                  <label for="icon_prefix">Type in a word</label>
+              </div>
+              <div class="col m3">
+                  <br/>
+                  <input  class="btn amber darken-3" type="submit" value="Find">
+              </div>
+          
+          </form>
+        </div>
+        <p *ngIf="checkHyponym()" class="teal-text" style="margin-left:5px">
+          <span style ="font-family:'Satisfy', cursive; font-size: 20px;" *ngFor="let result of hyponym_results">{{result.word}} | </span>
+        </p>
+      </div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons amber-text text-darken-4">menu_open</i>Words that rhyme with..</div>
+        <div class="collapsible-body" style="background:white;">
+
+        <div class="row" style="margin-top:10px">
+          <form (ngSubmit)="getRhymes()">
+            
+            
+              <div class="input-field col m8 offset-m1">       
+                  <input  id="icon_prefix" type="text" name="rhyme" [(ngModel)]="rhyme">
+                  <label for="icon_prefix">Type in a word</label>
+              </div>
+              <div class="col m3">
+                  <br/>
+                  <input  class="btn amber darken-3" type="submit" value="Find">
+              </div>
+          
+          </form>
+        </div>
+        <p *ngIf="checkRhyme()" class="teal-text" style="margin-left:5px">
+          <span style ="font-family:'Satisfy', cursive; font-size: 20px;" *ngFor="let result of rhyme_results">{{result.word}} | </span>
+        </p>
+      </div>
+      </li>
+
+      <li>
+        <div class="collapsible-header"><i class="material-icons amber-text text-darken-4">menu_open</i>Words that sound similar to(homophones)..</div>
+        <div class="collapsible-body" style="background:white;">
+
+        <div class="row" style="margin-top:10px">
+          <form (ngSubmit)="getHomophones()">
+            
+            
+              <div class="input-field col m8 offset-m1">       
+                  <input  id="icon_prefix" type="text" name="homophone" [(ngModel)]="homophone">
+                  <label for="icon_prefix">Type in a word</label>
+              </div>
+              <div class="col m3">
+                  <br/>
+                  <input  class="btn amber darken-3" type="submit" value="Find">
+              </div>
+          
+          </form>
+        </div>
+        <p *ngIf="checkHomophone()" class="teal-text" style="margin-left:5px">
+          <span style ="font-family:'Satisfy', cursive; font-size: 20px;" *ngFor="let result of homophone_results">{{result.word}} | </span>
+        </p>
+      </div>
+      </li>
+    </ul>
+  </div>
+  
+  
+    
+  
+        
+  
+        
+
+</div>
